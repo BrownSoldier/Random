@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Person {
@@ -42,12 +43,7 @@ public class Person {
     }
 
     public void setSsn(String ssn) {
-        if(isValidSSN(ssn)) {
-            this.ssn = ssn;
-        }
-        else {
-            throw new IllegalArgumentException("This isnt a vaild ssn");
-        }
+        this.ssn = ssn;
 
     }
     @Override
@@ -76,5 +72,24 @@ public class Person {
                 ", age=" + age +
                 ", ssn=" + ssn +
                 '}';
+    }
+    public Person lastStartsWith(Person person){
+        if ( person.getLastName().toUpperCase().charAt(0) == 'S' && person.getLastName().toUpperCase().charAt(0) == 'C' ) {
+            return person;
+        }
+        return null;
+    }
+    public Person firstStartsWith(Person person){
+        if ( person.getFirstName().toUpperCase().charAt(0) == 'A' && person.getFirstName().toUpperCase().charAt(0) == 'R' && person.getFirstName().toUpperCase().charAt(0) == 'Q') {
+            return person;
+        }
+        return null;
+    }
+    public void RemoveNull(List<Person> people){
+        for(int i =0; i < people.size();i++){
+            if(people.get(i) == null){
+                people.remove(i);
+            }
+        }
     }
 }
